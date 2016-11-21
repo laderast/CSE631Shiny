@@ -1,5 +1,5 @@
 ---
-title: "Intro to Shiny"
+title: "Intro to Shiny and Interactive Visualizations"
 author: "Ted Laderas"
 date: "November 21, 2016"
 output: slidy_presentation
@@ -13,30 +13,33 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Graphs with controls that alter the form or underlying data of graph
 - Types of Control:
-  - Presentation (type of graph)
-  - Underlying Data (filtering based on criteria)
+    - Presentation (type of graph, colors, faceting)
+    - Underlying Data (filtering based on criteria)
 
-## Decide the purpose of your Visualization
+## Decide the purpose & audience of your interactive visualization
 
 - Very Important! 
-- Exploration (EDA) 
-- Question Answering
-  - Is transcript abundance correlated with mutational load?
-  - Is alcohol preference associated with behavioral covariates?
+- Exploration (Exploratory Data Analysis) 
+    - Visualize Trends
+    - Understand variability in data
+- Answering a scientific question (focused visualization)
+    - Is transcript abundance correlated with mutational load?
+    - Is alcohol preference associated with behavioral covariates?
 
-## Tips: Filtering Data
+## Tips for building interactive visualizations
 
 - Don't show all the data! 
-  - Usually, a subset of your data can answer your question
-  - filter your dataset beforehand
+    - Usually, a subset of your data can answer your question
+    - filter your dataset beforehand
 - Think carefully about the interactive element
-  - Each slider and input box should have a purpose!
+    - Each slider and input box should have a purpose!
+- Have someone external test your visualization
+    - Is it confusing? Do you need to add help?
+    - Do the controls make sense?
 
 ##What is Shiny?
 
-Shiny is a web presentation framework that allows you to take R code and make it into an interactive visualization. 
-
-We'll use it for the workshop today.
+Shiny is a web presentation framework that allows you to take R code and make it into an interactive visualization. Basically, it lets you call a lot of Javascript to make User Interface Controls and graphs by using a few lines of R.
 
 ##Running a Shiny App
 
@@ -48,14 +51,21 @@ You can use `runApp()` if your working directory is the same as the app, but I u
 
 For the workshop, you'll use the Shiny App to do some EDA. You will need to be familiar with the basic architecture of the app.
 
-- `global.R` - This is where you'll do the majority of the work - place filtering and processing steps here. Any objects loaded here can be seen by both the `ui.R` and `server.R`.
-- `ui.R` - This is where the user interface and display elements are. Communicates with `server.R` with `input` object (values from ui Elements). Gets output elements with the `output` object provided by `server.R`.
-- `server.R` - All of the actual processing and plotting goes here. Gets UI values from `input` object and places the elements to be plotted in the `output` object so `ui.R` can access it.
+- `ui.R` - This is where the user interface and display elements are. 
+    - Communicates with `server.R` with `input` object (values from UI Elements such as `selectInput`).     - Gets output elements for display (such as plots) from the `output` object provided by `server.R`.
+- `server.R` - All of the actual processing and plotting goes here. 
+    - Gets UI values from `input` object and places the elements to be plotted in the `output` object so `ui.R` can access it.
+- `global.R` - Optional.
+    - Any objects loaded here can be seen by both `ui.R` and `server.R`. 
+    - Handy for building interactive UI elements
+    - I usually place filtering and preprocessing steps here
+        - Renaming columns, changing column datatype, etc
 
 ![Shiny Architecture](image/shinyArchitecture.png)
 
 ## What you'll do today
 
-- Start with a simple visualization (boxplot) with ggplot2()
-- Change the x-axis with a selectInput() control
-- Filter the data with dplyr()
+- Start with a simple visualization (boxplot) with `ggplot2`
+- Change the x-axis with a `selectInput()` control
+- Filter the data with `dplyr()`
+- More, if you have time

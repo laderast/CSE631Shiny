@@ -134,7 +134,7 @@ We use the `dplyr` package to provide filtering on different criteria. The `%>%`
 3. We want to filter out the data by `age`. Why would we want to do this? Add a slider after the selectInput element where it says . Note that we will have to add a comma after the `selectInput()` element, since we are passing a list of inputElements.
 
 ```{r, eval=FALSE}
-sliderInput("LengthFilter", "Filter by Length of Stay", min=20, max=88, value=45)
+sliderInput("AgeFilter", "Filter by Age", min=20, max=88, value=45)
 ```  
 
 4. Change the reactive code to use the input from the slider. Where do you add it into the reactive? Where is the sliderInput stored in input?

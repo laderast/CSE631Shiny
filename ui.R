@@ -18,6 +18,7 @@ shinyUI(fluidPage(
       ##selectInput code goes here
       
       ##sliderInput code goes here
+      
     ),
     
     # Display the plot

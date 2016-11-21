@@ -15,7 +15,7 @@ shinyServer(function(input, output) {
     filterValue <- 45
     
     out <- weightLossData %>% 
-      filter(age >= filterValue) 
+      filter(age <= filterValue) 
     
     return(out)
   })
