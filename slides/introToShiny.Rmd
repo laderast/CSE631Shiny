@@ -39,7 +39,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ##What is Shiny?
 
-Shiny is a web presentation framework that allows you to take R code and make it into an interactive visualization. Basically, it lets you call a lot of Javascript to make User Interface Controls and graphs by using a few lines of R.
+Shiny is a web presentation framework that allows you to take R code and make it into an interactive visualization. 
+
+Basically, it lets you build interactive websites with User Interface Controls and graphs by using a few lines of R. 
+
+Underneath, Shiny uses JavaScript Libraries (D3 and Bootstrap) to do the real presentation work.
 
 ##Running a Shiny App
 
@@ -49,12 +53,14 @@ You can use `runApp()` if your working directory is the same as the app, but I u
 
 ##Shiny App Architecture
 
-For the workshop, you'll use the Shiny App to do some EDA. You will need to be familiar with the basic architecture of the app.
+For the workshop, you'll use the Shiny App to do some EDA. You will need to be familiar with the basic architecture of the app, which usually consists of 3 files.
 
 - `ui.R` - This is where the user interface and display elements are. 
     - Communicates with `server.R` with `input` object (values from UI Elements such as `selectInput`).     - Gets output elements for display (such as plots) from the `output` object provided by `server.R`.
 - `server.R` - All of the actual processing and plotting goes here. 
-    - Gets UI values from `input` object and places the elements to be plotted in the `output` object so `ui.R` can access it.
+    - Gets UI values from `input` object (character, numeric, or boolean)
+    - Modifies plot or data if necessary
+    - Places the resulting plot output in the `output` object so `ui.R` can access it.
 - `global.R` - Optional.
     - Any objects loaded here can be seen by both `ui.R` and `server.R`. 
     - Handy for building interactive UI elements
@@ -63,7 +69,21 @@ For the workshop, you'll use the Shiny App to do some EDA. You will need to be f
 
 ![Shiny Architecture](image/shinyArchitecture.png)
 
+## Other things to remember
+
+The Shiny R session is distinct from anything you do in the console. 
+
+This means that anything you do in console (data loading, data manipulation) is not part of the Shiny App.
+
+## Beyond `data.frames`
+
+The `data.table` package is very fast, and is an alternative to data.table.
+
+For an example of using `data.table`, look at this app: https://github.com/laderast/DreamEDAShiny
+
 ## What you'll do today
+
+We'll start with a really simple visualization in `ggplot2` and learn how to modify it in real time with Shiny UI elements. This is enough to get you started.
 
 - Start with a simple visualization (boxplot) with `ggplot2`
 - Change the x-axis with a `selectInput()` control

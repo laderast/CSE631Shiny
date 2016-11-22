@@ -148,7 +148,7 @@ Two resources that will be extremely helpful: [Shiny Cheat Sheet](http://shiny.r
 
 Suggestions:
 
-1. Change the dataset! (suggestions: `iris` or `ChickWeight`) Think about what you need to modify to accomodate the new dataset. Do you need to change code in `server.R` or `ui.R`?
+1. Change the dataset! (suggestions: `iris` or `ChickWeight`) Think about what you need to modify to accomodate the new dataset (i.e., should you transform the data into tidy data? How are UI elements going to change to accomodate these). Do you need to change code in `server.R` or `ui.R`?
 
 2. Add some faceting code to your visualization using `facet_grid()`. Add another `selectInput` so you can select this facet.
 
@@ -166,12 +166,12 @@ We've only scratched the surface. Here's a much more comprehensive tutorial: htt
 
 There are a ton more ways to modify these interactive visualizations. I usually take a look at the Shiny Gallery before I plan my apps. http://shiny.rstudio.com/gallery/
 
-You can make your graphs way more interactive using the interactive tutorial here: http://shiny.rstudio.com/articles/plot-interaction.html
+You can make your graphs way more interactive using the interactive tutorial (responding to brush, click, hover, and double-click events) here: http://shiny.rstudio.com/articles/plot-interaction.html
 
-You can also make dynamic UIs (that respond to data filtering and such) using `renderUI()`.
+You can also make dynamic UI elements (that respond to data filtering and such) using `renderUI()`. Confusingly, `renderUI` is used in `server.R`, not `ui.R`. 
 
-If you want to make your graphs even more interactive (with tooltips), you can look into the `ggvis` package: https://github.com/laderast/ggvis-intro
+If you want to make your graphs even more interactive (with tooltips), you can look into the `ggvis` package, which uses `Vega` underneath to make more interactive presentations: https://github.com/laderast/ggvis-intro
 
 ##Feedback
 
-If you have any suggestions about how to improve this workshop, submit it as an issue to the GitHub: 
+If you have any suggestions about how to improve this workshop, submit it as an issue to the GitHub: https://github.com/laderast/CSE631Shiny

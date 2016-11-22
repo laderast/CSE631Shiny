@@ -68,7 +68,9 @@ Ted Laderas
 </div>
 <div id="what-is-shiny" class="slide section level2">
 <h1>What is Shiny?</h1>
-<p>Shiny is a web presentation framework that allows you to take R code and make it into an interactive visualization. Basically, it lets you call a lot of Javascript to make User Interface Controls and graphs by using a few lines of R.</p>
+<p>Shiny is a web presentation framework that allows you to take R code and make it into an interactive visualization.</p>
+<p>Basically, it lets you build interactive websites with User Interface Controls and graphs by using a few lines of R.</p>
+<p>Underneath, Shiny uses JavaScript Libraries (D3 and Bootstrap) to do the real presentation work.</p>
 </div>
 <div id="running-a-shiny-app" class="slide section level2">
 <h1>Running a Shiny App</h1>
@@ -80,7 +82,7 @@ Ted Laderas
 </div>
 <div id="shiny-app-architecture" class="slide section level2">
 <h1>Shiny App Architecture</h1>
-<p>For the workshop, you’ll use the Shiny App to do some EDA. You will need to be familiar with the basic architecture of the app.</p>
+<p>For the workshop, you’ll use the Shiny App to do some EDA. You will need to be familiar with the basic architecture of the app, which usually consists of 3 files.</p>
 <ul>
 <li><code>ui.R</code> - This is where the user interface and display elements are.
 <ul>
@@ -88,7 +90,9 @@ Ted Laderas
 </ul></li>
 <li><code>server.R</code> - All of the actual processing and plotting goes here.
 <ul>
-<li>Gets UI values from <code>input</code> object and places the elements to be plotted in the <code>output</code> object so <code>ui.R</code> can access it.</li>
+<li>Gets UI values from <code>input</code> object (character, numeric, or boolean)</li>
+<li>Modifies plot or data if necessary</li>
+<li>Places the resulting plot output in the <code>output</code> object so <code>ui.R</code> can access it.</li>
 </ul></li>
 <li><code>global.R</code> - Optional.
 <ul>
@@ -105,8 +109,19 @@ Ted Laderas
 <p class="caption">Shiny Architecture</p>
 </div>
 </div>
+<div id="other-things-to-remember" class="slide section level2">
+<h1>Other things to remember</h1>
+<p>The Shiny R session is distinct from anything you do in the console.</p>
+<p>This means that anything you do in console (data loading, data manipulation) is not part of the Shiny App.</p>
+</div>
+<div id="beyond-data.frames" class="slide section level2">
+<h1>Beyond <code>data.frames</code></h1>
+<p>The <code>data.table</code> package is very fast, and is an alternative to data.table.</p>
+<p>For an example of using <code>data.table</code>, look at this app: <a href="https://github.com/laderast/DreamEDAShiny" class="uri">https://github.com/laderast/DreamEDAShiny</a></p>
+</div>
 <div id="what-youll-do-today" class="slide section level2">
 <h1>What you’ll do today</h1>
+<p>We’ll start with a really simple visualization in <code>ggplot2</code> and learn how to modify it in real time with Shiny UI elements. This is enough to get you started.</p>
 <ul>
 <li>Start with a simple visualization (boxplot) with <code>ggplot2</code></li>
 <li>Change the x-axis with a <code>selectInput()</code> control</li>
