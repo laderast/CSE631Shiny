@@ -75,6 +75,30 @@ The Shiny R session is distinct from anything you do in the console.
 
 This means that anything you do in console (data loading, data manipulation) is not part of the Shiny App.
 
+In recent versions of Shiny, this appears not to be the case. So take caution.
+
+## Starting a Shiny App from Scratch
+
+RStudio >> File >> New Project >> New Directory >> Shiny Web Application
+
+This will set you up with the Shiny App skeleton that is required to build an app
+
+## Other formats
+
+I have played around with making interactive slides. These tend to require you learn about making small single file apps.
+
+## Deploying Your App
+
+You can use the 'publish' button if you have set up a ShinyApps.io account. More info here:
+
+http://shiny.rstudio.com/articles/shinyapps.html
+
+You can also deploy your own Shiny server if you have a linux machine or virtual machine (DigitalOcean is a great place to play around with Shiny server). 
+
+http://docs.rstudio.com/shiny-server/
+
+Please be careful with deploying your apps. Be cautious and careful about anything that shares patient data.
+
 ## Beyond `data.frames`
 
 The `data.table` package is very fast, and is an alternative to data.table.

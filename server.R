@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
   #weightData is a "reactive" version of weightLossData that we can filter
   #ignore this for tasks 1-2
   weightData <- reactive({
-    filterValue <- 45
+    filterValue <- input$AgeFilter
     
     out <- weightLossData %>% 
       filter(age <= filterValue) 
@@ -22,6 +22,8 @@ shinyServer(function(input, output) {
   
   output$boxPlot <- renderPlot({
     #paste plotting code here
+
   })
   
 })
+

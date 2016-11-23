@@ -124,27 +124,35 @@ We use the `dplyr` package to provide filtering on different criteria. The `%>%`
    nrow(out)
 ```
 
-2. Let's change the plotting code to use the reactive. Remove the previous plotting code and paste the following into its place:
+2. We want to filter out the data by `age`. Why would we want to do this? Add a slider after the selectInput element where it says . 
 
-```
-   ggplot(weightData(), aes_string(x="treatment", y="weightLossPerDay")) + 
-      geom_boxplot() 
-```
-
-3. We want to filter out the data by `age`. Why would we want to do this? Add a slider after the selectInput element where it says . Note that we will have to add a comma after the `selectInput()` element, since we are passing a list of inputElements.
+Note: that we will have to add a comma after the `selectInput()` element that we added before, since we are passing a list of inputElements into our app.
 
 ```{r, eval=FALSE}
 sliderInput("AgeFilter", "Filter by Age", min=20, max=88, value=45)
 ```  
 
-4. Change the reactive code to use the input from the slider. Where do you add it into the reactive? Where is the sliderInput stored in input?
+3. Let's change the plotting code to use the reactive. Remove the previous plotting code and paste the following into its place:
+
+```{r, eval=FALSE}
+ggplot(weightData(), aes_string(x="treatment", y="weightLossPerDay")) + 
+    geom_boxplot() 
+```
+
+4. Change the reactive code to use the input from the slider. Where do you add it into the reactive? Where is the sliderInput value stored in input?
 
 5. Reload your application and make sure that everything is peachy-keen before moving on.
+
+##Some notes on reactives
+
+Each reactive takes some memory and cpu time. Reusing reactives in your plots can make your app much more efficient.
 
 ##Task 4 (and beyond...)
 
 This is where you start to be able to have fun and explore the data set and alternative visualizations. 
-Two resources that will be extremely helpful: [Shiny Cheat Sheet](http://shiny.rstudio.com/images/shiny-cheatsheet.pdf) and the [ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/08/ggplot2-cheatsheet.pdf)
+Two resources that will be extremely helpful: 
+- [Shiny Cheat Sheet](http://shiny.rstudio.com/images/shiny-cheatsheet.pdf) 
+- [ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/08/ggplot2-cheatsheet.pdf)
 
 Suggestions:
 
@@ -153,7 +161,7 @@ Suggestions:
 2. Add some faceting code to your visualization using `facet_grid()`. Add another `selectInput` so you can select this facet.
 
 ```
- #Hint: think about what inputs `facet_grid()` needs and how to put it together (you may have to use a text function like `paste0`.) 
+#Hint: think about what inputs `facet_grid()` needs and how to put it together (you may have to use a text function like `paste0`.) 
 ```
 
 3. Add a `checkboxGroupInput` to filter out the data by site. 
@@ -166,11 +174,11 @@ We've only scratched the surface. Here's a much more comprehensive tutorial: htt
 
 There are a ton more ways to modify these interactive visualizations. I usually take a look at the Shiny Gallery before I plan my apps. http://shiny.rstudio.com/gallery/
 
-You can make your graphs way more interactive using the interactive tutorial (responding to brush, click, hover, and double-click events) here: http://shiny.rstudio.com/articles/plot-interaction.html
+You can make your graphs way more interactive (responding to brush, click, hover, and double-click events) using the interactive tutorial here: http://shiny.rstudio.com/articles/plot-interaction.html
 
-You can also make dynamic UI elements (that respond to data filtering and such) using `renderUI()`. Confusingly, `renderUI` is used in `server.R`, not `ui.R`. 
+You can also make dynamic UI elements (that respond to data filtering and such) using `renderUI()`. Confusingly, `renderUI` is used in `server.R`, not `ui.R`. You use `uiOutput()` in `ui.R` to actually output the actual UI.
 
-If you want to make your graphs even more interactive (with tooltips), you can look into the `ggvis` package, which uses `Vega` underneath to make more interactive presentations: https://github.com/laderast/ggvis-intro
+If you want to make your graphs even more interactive (with tooltips), you can look into the `ggvis` package, which uses `Vega` underneath to make more interactive elements: https://github.com/laderast/ggvis-intro
 
 ##Feedback
 
